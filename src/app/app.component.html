@@ -1,0 +1,106 @@
+<div class="navbar">
+  <mat-toolbar  style="display: flex; justify-content: space-between;">
+    <!-- <span>CURD Operation</span> -->
+    <!-- <span class="example-spacer"></span> -->
+    <img class="logo" src="https://strapi.dhiwise.com/uploads/how_to_streamline_your_application_with_flutter_getx_crud_api_1_b66eb9efed.jpg" width="25%" height="100%">
+    <button mat-raised-button (click)="addEmpForm()">Add Employee</button>
+  </mat-toolbar>
+</div>
+<!-- banar -->
+
+<div class="BanImg">
+  <div style="width: 50%;">
+   <img class="bainner" src="https://www.forbesindia.com/fbimages/900x600/proportional/jpeg/blog/wp-content/uploads/2017/02/employees.jpg">
+  </div>
+  <div class="empdata">
+   
+   <div class="form">
+     <h3>Employee Form</h3>
+     <div class="row">
+       <mat-form-field appearance="outline">
+           <mat-label>First Name</mat-label>
+           <input matInput placeholder="Ex.Aneesh">
+         </mat-form-field>
+         <mat-form-field appearance="outline">
+           <mat-label>Last Name</mat-label>
+           <input matInput placeholder="Ex.Maurya">
+         </mat-form-field>
+   </div>
+   <div class="row">
+       <mat-form-field appearance="outline">
+           <mat-label>Email</mat-label>
+           <input matInput placeholder="Ex.aneesh@gmail.com">
+         </mat-form-field>
+         <mat-form-field appearance="outline">
+           <mat-label>Mobile No.</mat-label>
+           <input matInput placeholder="Ex.1234567890">
+         </mat-form-field>
+   </div>
+   <div class="row">
+       <mat-form-field appearance="outline">
+           <mat-label>Salary</mat-label>
+           <input matInput placeholder="salary">
+         </mat-form-field>
+        
+   </div>
+   <div>
+     <button mat-raised-button class="empbtn">Submit</button>
+   </div>
+   </div>
+  </div>
+ </div>
+
+ <!-- table -->
+ <h2>Employee Details</h2>
+<div class="table">
+ 
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+ 
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="id" sticky>
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="firstname">
+      <th mat-header-cell *matHeaderCellDef> First Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.firstname}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="lastname">
+      <th mat-header-cell *matHeaderCellDef> Last Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}}</td>
+    </ng-container>
+    <ng-container matColumnDef="mobile">
+      <th mat-header-cell *matHeaderCellDef> Mobile No. </th>
+      <td mat-cell *matCellDef="let element">{{element.mobile}} </td>
+    </ng-container>
+    <ng-container matColumnDef="salary">
+      <th mat-header-cell *matHeaderCellDef> Salary </th>
+      <td mat-cell *matCellDef="let element">{{element.salary}} </td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon style="color: gray !important;margin-right: 5% !important;">edit</mat-icon>
+        <mat-icon style="color: gray !important;">delete</mat-icon>
+         </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true" class="mat-header-row" ></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+  
+ 

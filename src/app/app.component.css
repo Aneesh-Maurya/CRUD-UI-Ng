@@ -1,0 +1,81 @@
+.example-spacer {
+    flex: 1 1 auto;
+    
+  }
+  mat-toolbar{
+  background-color: rgba(0, 0, 0, 0.84);
+ 
+ }
+.table{
+  width: 100%;
+  overflow: auto;
+  height: 300px;
+}
+.mat-column-action{
+  width: 200px;
+  border-left: 1px solid  #e0e0e0;
+  text-align: center;
+
+  
+}
+.mat-column-id {
+  width: 100px;
+  border-right: 1px solid currentColor;
+  padding-right: 24px;
+  text-align: center;
+}
+.edit{
+  background-color: rgb(20, 151, 203)!important;
+  margin-right: 10px !important;
+  color: white !important;
+}
+.mat-header-row th{
+  border-bottom: 1px solid currentColor;
+  border-top: 1px solid currentColor;
+  font-size: 100%;
+  font-weight: bolder;
+
+}
+.logo{
+  display: flex;
+}
+.icon{
+  color:red;
+}
+.bainner{
+ 
+  /* width: 80%; */
+  padding: 3%;
+  padding-top: 10%;
+  border-radius: 1px;
+  width: 90%; height: 60%;
+  
+}
+.BanImg{
+  display:flex;
+  margin-left: auto;
+  background-image: linear-gradient(80deg ,rgba(255, 255, 255, 0.887),rgba(154, 149, 149, 0.617));
+  
+}
+.empdata{
+  padding: 2%;
+  width: 50%;
+ 
+}
+.row{
+  display: flex;
+  gap: 10px;
+  text-align: center;
+}
+.form{
+  background-color: rgb(225, 223, 223);
+  box-shadow: inset;
+  border-radius: 10px;
+ padding: 3%;
+}
+mat-form-field {
+  width: 100%;
+}
+.empbtn{
+  background-color: rgb(225, 223, 223) !important;
+}
