@@ -9,42 +9,42 @@
 <!-- banar -->
 
 <div class="BanImg">
-  <div style="width: 50%;">
-   <img class="bainner" src="https://www.forbesindia.com/fbimages/900x600/proportional/jpeg/blog/wp-content/uploads/2017/02/employees.jpg">
+  <div class="imgw">
+   <img class="col-12 bainner" src="https://www.forbesindia.com/fbimages/900x600/proportional/jpeg/blog/wp-content/uploads/2017/02/employees.jpg">
   </div>
-  <div class="empdata">
+  <div class="empform empdata"  [formGroup]="empForm">
    
-   <div class="form">
+   <div class=" form">
      <h3>Employee Form</h3>
-     <div class="row">
+     <div class="row" >
        <mat-form-field appearance="outline">
            <mat-label>First Name</mat-label>
-           <input matInput placeholder="Ex.Aneesh">
+           <input matInput placeholder="Ex.Aneesh" formControlName="firstname">
          </mat-form-field>
          <mat-form-field appearance="outline">
            <mat-label>Last Name</mat-label>
-           <input matInput placeholder="Ex.Maurya">
+           <input matInput placeholder="Ex.Maurya" formControlName="lastname">
          </mat-form-field>
    </div>
    <div class="row">
        <mat-form-field appearance="outline">
            <mat-label>Email</mat-label>
-           <input matInput placeholder="Ex.aneesh@gmail.com">
+           <input matInput placeholder="Ex.aneesh@gmail.com" formControlName="email">
          </mat-form-field>
          <mat-form-field appearance="outline">
            <mat-label>Mobile No.</mat-label>
-           <input matInput placeholder="Ex.1234567890">
+           <input matInput placeholder="Ex.1234567890" formControlName="mobile">
          </mat-form-field>
    </div>
    <div class="row">
        <mat-form-field appearance="outline">
            <mat-label>Salary</mat-label>
-           <input matInput placeholder="salary">
+           <input matInput placeholder="salary" formControlName="salary">
          </mat-form-field>
         
    </div>
    <div>
-     <button mat-raised-button class="empbtn">Submit</button>
+     <button mat-raised-button class="empbtn" (click)="empData()">Submit</button>
    </div>
    </div>
   </div>
@@ -93,7 +93,7 @@
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef> Action </th>
       <td mat-cell *matCellDef="let element">
-        <mat-icon style="color: gray !important;margin-right: 5% !important;">edit</mat-icon>
+        <mat-icon style="color: gray !important;margin-right: 5% !important;" (click)="addEmpForm()">edit</mat-icon>
         <mat-icon style="color: gray !important;">delete</mat-icon>
          </td>
     </ng-container>
@@ -101,6 +101,19 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 </div>
-
+<footer>
+  <div style="background-color:rgba(0, 0, 0, 0.84) ; height: 200px; display: flex;">
+    <div style="width: 50%;padding: 4%;">
+      <img src="https://strapi.dhiwise.com/uploads/how_to_streamline_your_application_with_flutter_getx_crud_api_1_b66eb9efed.jpg" width="90%" height="90%">
+     </div>
+    <div style="width: 50%;" class="footertext">
+      <h3>CRUD Operation</h3>
+      <p>Create</p>
+      <p>Read</p>
+      <p>Update</p>
+      <p>Delete</p>
+    </div>
+  </div>
+</footer>
   
  
