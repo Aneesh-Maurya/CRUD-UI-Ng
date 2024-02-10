@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { EmployeeComponent } from './employee/employee.component';
 import { FormControl,FormGroup,Validators } from '@angular/forms';
+import { EmployeeServiceService} from './service/employee-service.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'curd';
-
+  data:any
    empForm=new FormGroup({
     firstname:new FormControl('',[Validators.required]),
     lastname:new FormControl('',[Validators.required]),
@@ -19,9 +20,12 @@ export class AppComponent {
    })
 
    
-  constructor(private dialog:MatDialog){}
+  constructor(private dialog:MatDialog,private empService:EmployeeServiceService){}
+  ngOnInit(): void {
+   this.get_Employee_data()
+  }
    
-   addEmpForm(){
+   edit_Emp_Form(){
     this.dialog.open(EmployeeComponent,{
       width:'450px',
        height:'400px'
@@ -29,7 +33,7 @@ export class AppComponent {
 
    }
    
-   empData(){
+   add_Emp_Data(){
     if(this.empForm.invalid){
       this.empForm.controls['firstname'].markAsTouched()
       this.empForm.controls['lastname'].markAsTouched()
@@ -37,12 +41,20 @@ export class AppComponent {
       this.empForm.controls['mobile'].markAsTouched()
       this.empForm.controls['salary'].markAsTouched()
     }else{
-      console.log(this.empForm.value)
+      const data=this.empForm.value
+      this.empService.insertData(data).subscribe(res=>{
+        alert("Employee added")
+        
+      })
     }
     
    }
-
-
+   
+   get_Employee_data(){
+    this.empService.getData().subscribe(res=>{
+      this.data=res
+    })
+   }
 
 
 
@@ -51,12 +63,13 @@ export class AppComponent {
 
 
    displayedColumns: string[] = ['id', 'firstname','lastname', 'email', 'mobile','salary','action'];
-   dataSource=[{id: 10, firstname: 'Neon', lastname:'sdfgafg',email:'sdhsghd',mobile:9648307910, salary: 20.1797},
-   {id: 10, firstname: 'Neon', lastname:'sdfgafg',email:'sdhshdshbfhsbdfvcsghd',mobile:9648307910, salary: 20.1797},
-   {id: 10, firstname: 'Negdsgsdgson', lastname:'sdffsdfsdgdsgsgafg',email:'sdhfdsfdfssghd',mobile:9648307910, salary: 20.1797},
-   {id: 10, firstname: 'Neon', lastname:'sdfgafg',email:'sdhsghd',mobile:9648307910, salary: 20.1797},
-   {id: 10, firstname: 'Neon', lastname:'sdfgafg',email:'sdhsghd',mobile:9648307910, salary: 20.1797},
-   {id: 10, firstname: 'Neon', lastname:'sdfgafg',email:'sdhsghd',mobile:9648307910, salary: 20.1797},
-   {id: 10, firstname: 'Neon', lastname:'sdfgafg',email:'sdhsghd',mobile:9648307910, salary: 20.1797}
-               ]
+  //  dataSource=[{id: 10, firstname: 'Neon', lastname:'sdfgafg',email:'sdhsghd',mobile:9648307910, salary: 20.1797},
+  //  {id: 10, firstname: 'Neon', lastname:'sdfgafg',email:'sdhshdshbfhsbdfvcsghd',mobile:9648307910, salary: 20.1797},
+  //  {id: 10, firstname: 'Negdsgsdgson', lastname:'sdffsdfsdgdsgsgafg',email:'sdhfdsfdfssghd',mobile:9648307910, salary: 20.1797},
+  //  {id: 10, firstname: 'Neon', lastname:'sdfgafg',email:'sdhsghd',mobile:9648307910, salary: 20.1797},
+  //  {id: 10, firstname: 'Neon', lastname:'sdfgafg',email:'sdhsghd',mobile:9648307910, salary: 20.1797},
+  //  {id: 10, firstname: 'Neon', lastname:'sdfgafg',email:'sdhsghd',mobile:9648307910, salary: 20.1797},
+  //  {id: 10, firstname: 'Neon', lastname:'sdfgafg',email:'sdhsghd',mobile:9648307910, salary: 20.1797}
+  //              ]
+  
 }

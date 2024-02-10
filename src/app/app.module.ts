@@ -13,6 +13,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTableModule} from '@angular/material/table';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import {MatMenuModule} from '@angular/material/menu';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +31,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     BrowserAnimationsModule,
     MatTableModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule ,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
