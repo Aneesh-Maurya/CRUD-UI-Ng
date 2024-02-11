@@ -15,6 +15,8 @@ import {MatTableModule} from '@angular/material/table';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {MatMenuModule} from '@angular/material/menu';
+import { MatPaginatorModule} from '@angular/material/paginator';
+import { MatSortModule} from '@angular/material/sort';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +35,9 @@ import {MatMenuModule} from '@angular/material/menu';
     MatTableModule,
     ReactiveFormsModule,
     HttpClientModule ,
-    MatMenuModule
+    MatMenuModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]

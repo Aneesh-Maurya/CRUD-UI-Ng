@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { EmployeeComponent } from './employee/employee.component';
 import { FormControl,FormGroup,Validators } from '@angular/forms';
 import { EmployeeServiceService} from './service/employee-service.service';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,6 +14,19 @@ import { EmployeeServiceService} from './service/employee-service.service';
 export class AppComponent implements OnInit {
   title = 'curd';
   data:any
+  displayedColumns: string[] = [
+  'id', 
+  'firstname',
+  'lastname', 
+  'email',
+   'mobile',
+   'salary',
+   'action'
+  ];
+  dataSource!:MatTableDataSource<any>
+  
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
    empForm=new FormGroup({
     firstname:new FormControl('',[Validators.required]),
     lastname:new FormControl('',[Validators.required]),
@@ -48,6 +64,7 @@ export class AppComponent implements OnInit {
       this.empForm.controls['salary'].markAsTouched()
     }else{
       const data=this.empForm.value
+      console.log(data)
       this.empService.insertEmployeeData(data).subscribe(res=>{
         alert("Employee added")
         this.get_Employee_data()
@@ -60,6 +77,10 @@ export class AppComponent implements OnInit {
    get_Employee_data(){
     this.empService.getEmployeeData().subscribe(res=>{
       this.data=res
+    
+      this.dataSource= new MatTableDataSource(this.data)
+      this.dataSource.sort=this.sort
+      this.dataSource.paginator=this.paginator
     })
    }
    
@@ -78,7 +99,7 @@ export class AppComponent implements OnInit {
 
 
 
-   displayedColumns: string[] = ['id', 'firstname','lastname', 'email', 'mobile','salary','action'];
+   
 
   
 }
