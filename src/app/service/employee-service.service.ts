@@ -1,19 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeServiceService {
-  
-    url='https://curdapi-vo3v.onrender.com'; 
+    
+    url= 'https://curdapi.cyclic.app'; 
    
   constructor(public http:HttpClient) { }
-  getData(){
+  getEmployeeData(){
     return this.http.get(this.url+'/get');
 
   }
-  insertData(data:any){
+  insertEmployeeData(data:any){
     return this.http.post(this.url+'/insert',data)
+  }
+  updateEmployeeData(id:any,data:any){
+    return this.http.put(this.url+'/update/'+id,data)
+  }
+  deleteEmployeeData(id:any){
+    return this.http.delete(this.url+'/delete/'+id )
   }
 
 }

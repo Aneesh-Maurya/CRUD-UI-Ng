@@ -1,35 +1,41 @@
 <div mat-dialog-title>Employee Form</div>
-<div mat-dialog-content class="content">
+<div mat-dialog-content class="content" [formGroup]="empForm">
     <div class="row">
         <mat-form-field appearance="outline">
             <mat-label>First Name</mat-label>
-            <input matInput placeholder="Ex.Aneesh">
+            <input matInput placeholder="Ex.Aneesh" formControlName="firstname">
+            <mat-error *ngIf="empForm.controls['firstname'].invalid">First Name is required</mat-error>
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Last Name</mat-label>
-            <input matInput placeholder="Ex.Maurya">
+            <input matInput placeholder="Ex.Maurya" formControlName="lastname">
+            <mat-error *ngIf="empForm.controls['lastname'].invalid">Last Name is required</mat-error>
           </mat-form-field>
     </div>
     <div class="row">
         <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput placeholder="Ex.aneesh@gmail.com">
+            <input matInput placeholder="Ex.aneesh@gmail.com" formControlName="email">
+            <mat-error *ngIf="empForm.controls['email'].invalid">Email is required</mat-error>
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Mobile No.</mat-label>
-            <input matInput placeholder="Ex.1234567890">
+            <input matInput placeholder="Ex.1234567890" formControlName="mobile">
+            <mat-error *ngIf="empForm.controls['mobile'].invalid">Mobile No. is required</mat-error>
           </mat-form-field>
     </div>
     <div class="row">
         <mat-form-field appearance="outline">
             <mat-label>Salary</mat-label>
-            <input matInput placeholder="salary">
+            <input matInput placeholder="salary" formControlName="salary">
+            <mat-error *ngIf="empForm.controls['salary'].invalid">Salary is required</mat-error>
+            
           </mat-form-field>
          
     </div>
 </div>
 <div mat-dialog-action class="button" align="end">
-    <button mat-raised-button color="warn" style="margin-right: 10px;">Cancel</button>
-    <button mat-raised-button color="primary">Save</button>
+    <button mat-raised-button color="warn" style="margin-right: 10px;" mat-dialog-close="true">Cancel</button>
+    <button mat-raised-button color="primary" (click)=" updateData()">Update</button>
     
 </div>

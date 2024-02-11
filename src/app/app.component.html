@@ -36,31 +36,36 @@
        <mat-form-field appearance="outline">
            <mat-label>First Name</mat-label>
            <input matInput placeholder="Ex.Aneesh" formControlName="firstname">
+           <mat-error *ngIf="empForm.controls['firstname'].invalid">First Name is required</mat-error>
          </mat-form-field>
          <mat-form-field appearance="outline">
            <mat-label>Last Name</mat-label>
            <input matInput placeholder="Ex.Maurya" formControlName="lastname">
+           <mat-error *ngIf="empForm.controls['lastname'].invalid">Last Name is required</mat-error>
          </mat-form-field>
    </div>
    <div class="row">
        <mat-form-field appearance="outline">
            <mat-label>Email</mat-label>
            <input matInput placeholder="Ex.aneesh@gmail.com" formControlName="email">
+           <mat-error *ngIf="empForm.controls['email'].invalid">Email is required</mat-error>
          </mat-form-field>
          <mat-form-field appearance="outline">
            <mat-label>Mobile No.</mat-label>
            <input matInput placeholder="Ex.1234567890" formControlName="mobile">
+           <mat-error *ngIf="empForm.controls['mobile'].invalid">Mobile No. is required</mat-error>
          </mat-form-field>
    </div>
    <div class="row">
        <mat-form-field appearance="outline">
            <mat-label>Salary</mat-label>
            <input matInput placeholder="salary" formControlName="salary">
+           <mat-error *ngIf="empForm.controls['salary'].invalid">Salary is required</mat-error>
          </mat-form-field>
         
    </div>
    <div>
-     <button mat-raised-button class="empbtn" (click)="add_Emp_Data()">Submit</button>
+     <button mat-raised-button class="empbtn" (click)="add_Emp_Form()">Submit</button>
    </div>
    </div>
   </div>
@@ -113,11 +118,11 @@
         <mat-icon style="color: gray !important;">delete</mat-icon> -->
         <mat-icon [matMenuTriggerFor]="menu">more_vert</mat-icon>
         <mat-menu #menu="matMenu" xPosition="before">
-          <button mat-menu-item (click)="edit_Emp_Form()">
+          <button mat-menu-item (click)="edit_Emp_Form(element)">
             <mat-icon>edit</mat-icon>
             <span>Edit</span>
           </button>
-          <button mat-menu-item>
+          <button mat-menu-item (click)="delete_Emp_Data(element.id)">
             <mat-icon>delete</mat-icon>
             <span>Delete</span>
           </button>
@@ -131,7 +136,7 @@
 <footer>
   <div style="background-color:rgba(0, 0, 0, 0.84) ; height: 200px; display: flex;">
     <div style="width: 50%;padding: 4%;">
-      <img src="https://strapi.dhiwise.com/uploads/how_to_streamline_your_application_with_flutter_getx_crud_api_1_b66eb9efed.jpg" width="90%" height="90%">
+      <img src="https://strapi.dhiwise.com/uploads/how_to_streamline_your_application_with_flutter_getx_crud_api_1_b66eb9efed.jpg" width="90%" height="100%">
      </div>
     <div style="width: 50%;" class="footertext">
       <h3>CRUD Operation</h3>

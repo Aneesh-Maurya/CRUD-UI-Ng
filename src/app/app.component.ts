@@ -24,16 +24,22 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
    this.get_Employee_data()
   }
-   
-   edit_Emp_Form(){
-    this.dialog.open(EmployeeComponent,{
+   // update employee data in database
+   edit_Emp_Form(user:any){
+   const dialogRef= this.dialog.open(EmployeeComponent,{
       width:'450px',
-       height:'400px'
+      //  height:'400px'
+      data:user
+    })
+    dialogRef.afterClosed().subscribe(res=>{
+      if(res){
+        this.get_Employee_data()
+      }
     })
 
    }
-   
-   add_Emp_Data(){
+   // Add employee data in database
+   add_Emp_Form(){
     if(this.empForm.invalid){
       this.empForm.controls['firstname'].markAsTouched()
       this.empForm.controls['lastname'].markAsTouched()
@@ -42,17 +48,28 @@ export class AppComponent implements OnInit {
       this.empForm.controls['salary'].markAsTouched()
     }else{
       const data=this.empForm.value
-      this.empService.insertData(data).subscribe(res=>{
+      this.empService.insertEmployeeData(data).subscribe(res=>{
         alert("Employee added")
+        this.get_Employee_data()
         
       })
     }
     
    }
-   
+   // get employee data from database
    get_Employee_data(){
-    this.empService.getData().subscribe(res=>{
+    this.empService.getEmployeeData().subscribe(res=>{
       this.data=res
+    })
+   }
+   
+   // delete Employee data
+   delete_Emp_Data(id:any){
+    this.empService.deleteEmployeeData(id).subscribe(res=>{
+      if(res){
+        alert('employee deleted successfully')
+        this.get_Employee_data()
+      }
     })
    }
 
@@ -61,15 +78,7 @@ export class AppComponent implements OnInit {
 
 
 
-
    displayedColumns: string[] = ['id', 'firstname','lastname', 'email', 'mobile','salary','action'];
-  //  dataSource=[{id: 10, firstname: 'Neon', lastname:'sdfgafg',email:'sdhsghd',mobile:9648307910, salary: 20.1797},
-  //  {id: 10, firstname: 'Neon', lastname:'sdfgafg',email:'sdhshdshbfhsbdfvcsghd',mobile:9648307910, salary: 20.1797},
-  //  {id: 10, firstname: 'Negdsgsdgson', lastname:'sdffsdfsdgdsgsgafg',email:'sdhfdsfdfssghd',mobile:9648307910, salary: 20.1797},
-  //  {id: 10, firstname: 'Neon', lastname:'sdfgafg',email:'sdhsghd',mobile:9648307910, salary: 20.1797},
-  //  {id: 10, firstname: 'Neon', lastname:'sdfgafg',email:'sdhsghd',mobile:9648307910, salary: 20.1797},
-  //  {id: 10, firstname: 'Neon', lastname:'sdfgafg',email:'sdhsghd',mobile:9648307910, salary: 20.1797},
-  //  {id: 10, firstname: 'Neon', lastname:'sdfgafg',email:'sdhsghd',mobile:9648307910, salary: 20.1797}
-  //              ]
+
   
 }
