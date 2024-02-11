@@ -28,17 +28,18 @@
   /* height: 300px; */
 }
 .mat-column-action{
-  width: 150px;
+  width: 100px;
   border-left: 1px solid  #e0e0e0;
-  text-align: center;
+ 
 
   
 }
+
 .mat-column-id {
   width: 100px;
   border-right: 1px solid currentColor;
   padding-right: 24px;
-  text-align: center;
+  margin-left: 20px;
 }
 .edit{
   background-color: rgb(20, 151, 203)!important;
