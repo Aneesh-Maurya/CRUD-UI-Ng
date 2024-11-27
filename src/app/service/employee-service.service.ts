@@ -6,7 +6,7 @@ import { HttpClient} from '@angular/common/http';
 })
 export class EmployeeServiceService {
     
-    url= 'https://curdapi.cyclic.app'; 
+    url= 'https://curdapi-vo3v.onrender.com'; 
    
   constructor(public http:HttpClient) { }
   getEmployeeData(){
