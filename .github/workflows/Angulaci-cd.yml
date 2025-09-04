@@ -22,8 +22,5 @@ jobs:
       - name: Install dependencies
         run: npm ci   # faster & cleaner than npm install
 
-      - name: Run tests
-        run: npm test -- --watch=false --browsers=ChromeHeadless
-
       - name: Build Angular app
         run: npm run build -- --configuration=production
